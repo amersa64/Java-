@@ -1,0 +1,14 @@
+public static void JDBCexample(String dbid, String userid, String passwd){
+  try {
+    Class.forName ("oracle.jdbc.driver.OracleDriver"); // load driver
+    Connection conn = DriverManager.getConnection( // connect to server
+                      "jdbc:oracle:thin:@fourier.cs.iitedu:1521:univdb", aalsabbagh, misho1995);
+    Statement stmt = conn.createStatement(); // create Statement object
+    … Do Actual Work ….
+      stmt.close(); // close Statement and release resources
+    conn.close(); // close Connection and release resources
+  }
+  catch (SQLException sqle) {
+    System.out.println("SQLException : " + sqle); // handle exceptions
+  }
+}

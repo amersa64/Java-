@@ -1,0 +1,34 @@
+import java.sql.*;  // for standard JDBC programs
+//import java.util.*;
+//import java.math.*; // for BigDecimal and BigInteger support
+public class JDBCexample {
+  public static void main(String args[]) {
+//    Scanner keyboard = new Scanner(System.in);
+//    System.out.print("Please enter a db: ");
+//    String word1 = keyboard.next();
+//    System.out.print("Please enter another user: ");
+//    String word2 = keyboard.next();
+//    System.out.print("Enter one last word, please pass: ");
+//    String word3 = keyboard.next();
+    jj("Orcale IIT", "aalsabbagh", "misho1995");
+//   keyboard.close();
+  }
+  public static void jj(String dbid, String userid, String passwd){
+    try {
+      Class.forName ("orcale.jdbc.driver.OracleDriver"); // load driver
+      Connection conn = DriverManager.getConnection( // connect to server
+                                                    "jdbc:oracle:thin:@fourier.cs.iit.edu:1521:orcl", userid, passwd );
+      Statement stmt = conn.createStatement(); // create Statement object
+      // … Do Actual Work ….
+      stmt.close(); // close Statement and release resources
+      conn.close(); // close Connection and release resources
+    }
+   catch(ClassNotFoundException ex) {
+   System.out.println("Error: unable to load driver class!");
+   System.exit(1);
+    }
+   catch (SQLException sqle) {
+    System.out.println("SQLException : " + sqle); // handle exceptions
+    }
+  }
+}
